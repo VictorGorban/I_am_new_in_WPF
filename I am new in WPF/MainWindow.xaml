@@ -1,0 +1,112 @@
+﻿<Window x:Class="I_am_new_in_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="350">
+    <Grid Name = "LayoutRoot" Background="#443f3b">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <!-- Text -->
+        <TextBox    
+            FontSize="25" 
+            Name = "EditBlock" 
+            Grid.Row = "0" 
+            Grid.Column = "0" 
+            Grid.RowSpan="2" 
+            Grid.ColumnSpan="5" 
+            BorderThickness="0" 
+            Background="#1c1c1c" 
+            Foreground="White" 
+            Margin="1,3.2" 
+            SelectionBrush="LightGray" 
+            SelectionOpacity="0.3"
+            />
+        <TextBlock  FontSize="25" Name="ResultBlock" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Background="#1c1c1c" Margin="1.6,3.2"/>
+        <!-- Numbers -->
+        <Button  Grid.Row = "4" Grid.Column = "0" Content="7"/>
+        <Button  Grid.Row = "4" Grid.Column = "1" Content="8"/>
+        <Button  Grid.Row = "4" Grid.Column = "2" Content="9"/>
+        <Button  Grid.Row = "5" Grid.Column = "0">4</Button>
+        <Button  Grid.Row = "5" Grid.Column = "1">5</Button>
+        <Button  Grid.Row = "5" Grid.Column = "2">6</Button>
+        <Button  Grid.Row = "6" Grid.Column = "0" Content="1"/>
+        <Button  Grid.Row = "6" Grid.Column = "1" Content="2"/>
+        <Button  Grid.Row = "6" Grid.Column = "2" Content="3"/>
+        <Button  Grid.Row = "7" Grid.Column = "0">0</Button>
+        <!-- Operations -->
+        <Button  Grid.Row = "5" Grid.Column = "3" Content="×"/>
+        <Button  Grid.Row = "6" Grid.Column = "3">-</Button>
+        <Button  Grid.Row = "7" Grid.Column = "3">+</Button>
+        <Button  Grid.Row = "7" Grid.Column = "2">%</Button>
+        <Button  Grid.Row = "4" Grid.Column = "4">√</Button>
+        <Button  Grid.Row = "5" Grid.Column = "4">^</Button>
+        <Button  Grid.Row = "7" Grid.Column = "4">=</Button>
+        <Button  Grid.Row = "4" Grid.Column = "3" Content="÷"/>
+        <!-- Other actions -->
+        <Button  Grid.Row = "3" Grid.Column = "3">C</Button>
+        <Button  Grid.Row = "3" Grid.Column = "4" Content="←"/>
+        <!-- Misc -->
+        <Button  Grid.Row = "7" Grid.Column = "1">.</Button>
+        <Button  Grid.Row = "3" Grid.Column = "1">(</Button>
+        <Button  Grid.Row = "3" Grid.Column = "2">)</Button>
+        <Button  Grid.Row = "7" Grid.Column = "1">.</Button>
+        <Button  Grid.Row = "3" Grid.Column = "0">HIST</Button>
+        <Button  Grid.Row = "6" Grid.Column = "5" ToolTip="Coming soon... Maybe">...</Button>
+    </Grid>
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">           
+            <Setter Property="Margin" Value="1.6" />
+            <Setter Property="Background" Value="#1c1c1c" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="./#Segoe UI" />
+            <Setter Property="FontWeight" Value="DemiBold"  />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="DimGray" BorderThickness="1">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#3c3c3c"/>
+                                <Setter Property="Margin" Value="2.5"/>
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#3c3c3c"/>
+                                <Setter Property="Margin" Value="4"/>
+                                <Setter Property="Opacity" Value="1.0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+       </Window.Resources>
+</Window>
