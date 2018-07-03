@@ -68,19 +68,26 @@
         <Button  Grid.Row = "3" Grid.Column = "1">(</Button>
         <Button  Grid.Row = "3" Grid.Column = "2">)</Button>
         <Button  Grid.Row = "7" Grid.Column = "1">.</Button>
-        <Button  Grid.Row = "3" Grid.Column = "0">HIST</Button>
+        <Button  Grid.Row = "3" Grid.Column = "0" >HIST</Button>
         <Button  Grid.Row = "6" Grid.Column = "5" ToolTip="Coming soon... Maybe">...</Button>
     </Grid>
 
     <Window.Resources>
-        <Style TargetType="{x:Type Button}">           
+        <Style TargetType="Button">           
             <Setter Property="Margin" Value="1.6" />
-            <Setter Property="Background" Value="#1c1c1c" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="./#Segoe UI" />
+            <Setter Property="FontFamily" Value=".Segoe UI" />
             <Setter Property="FontWeight" Value="DemiBold"  />
             <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush SpreadMethod="Pad" StartPoint="0,0" EndPoint="0,0.5">
+                        <GradientStop Offset="-4" Color="DarkGray"/>
+                        <GradientStop Offset="1" Color="#0c0c0c"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
 
             <Setter Property="Template">
                 <Setter.Value>
