@@ -6,79 +6,71 @@
         
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="350">
-    <Grid Name = "LayoutRoot" Background="#443f3b">
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <!-- Text -->
-        <TextBox    
-            FontSize="25" 
-            Name = "EditBlock" 
-            Grid.Row = "0" 
-            Grid.Column = "0" 
-            Grid.RowSpan="2" 
-            Grid.ColumnSpan="5" 
-            BorderThickness="0" 
-            Background="#1c1c1c" 
-            Foreground="White" 
-            Margin="1,3.2" 
-            SelectionBrush="LightGray" 
-            SelectionOpacity="0.3"
-            />
-        <TextBlock  FontSize="25" Name="ResultBlock" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Background="#1c1c1c" Margin="1.6,3.2"/>
-        <!-- Numbers -->
-        <Button  Grid.Row = "4" Grid.Column = "0" Content="7"/>
-        <Button  Grid.Row = "4" Grid.Column = "1" Content="8"/>
-        <Button  Grid.Row = "4" Grid.Column = "2" Content="9"/>
-        <Button  Grid.Row = "5" Grid.Column = "0">4</Button>
-        <Button  Grid.Row = "5" Grid.Column = "1">5</Button>
-        <Button  Grid.Row = "5" Grid.Column = "2">6</Button>
-        <Button  Grid.Row = "6" Grid.Column = "0" Content="1"/>
-        <Button  Grid.Row = "6" Grid.Column = "1" Content="2"/>
-        <Button  Grid.Row = "6" Grid.Column = "2" Content="3"/>
-        <Button  Grid.Row = "7" Grid.Column = "0">0</Button>
-        <!-- Operations -->
-        <Button  Grid.Row = "5" Grid.Column = "3" Content="×"/>
-        <Button  Grid.Row = "6" Grid.Column = "3">-</Button>
-        <Button  Grid.Row = "7" Grid.Column = "3">+</Button>
-        <Button  Grid.Row = "7" Grid.Column = "2">%</Button>
-        <Button  Grid.Row = "4" Grid.Column = "4">√</Button>
-        <Button  Grid.Row = "5" Grid.Column = "4">^</Button>
-        <Button  Grid.Row = "7" Grid.Column = "4">=</Button>
-        <Button  Grid.Row = "4" Grid.Column = "3" Content="÷"/>
-        <!-- Other actions -->
-        <Button  Grid.Row = "3" Grid.Column = "3">C</Button>
-        <Button  Grid.Row = "3" Grid.Column = "4" Content="←"/>
-        <!-- Misc -->
-        <Button  Grid.Row = "7" Grid.Column = "1">.</Button>
-        <Button  Grid.Row = "3" Grid.Column = "1">(</Button>
-        <Button  Grid.Row = "3" Grid.Column = "2">)</Button>
-        <Button  Grid.Row = "7" Grid.Column = "1">.</Button>
-        <Button  Grid.Row = "3" Grid.Column = "0" >HIST</Button>
-        <Button  Grid.Row = "6" Grid.Column = "5" ToolTip="Coming soon... Maybe">...</Button>
-    </Grid>
-
     <Window.Resources>
-        <Style TargetType="Button">           
+        <Style x:Key="RoudedBorder" TargetType="Border">
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderBrush" Value="DimGray"></Setter>
+            <Setter Property="Background" Value="#1c1c1c"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
+        </Style>
+
+
+        <Style x:Name="TypicalRichTextBox" TargetType="RichTextBox" x:Key="TypicalRichTextBox">
+            <Setter Property="Margin" Value="1.6,3" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="FontWeight" Value="Normal"  />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Background" Value="#1c1c1c" />
+            <Setter Property="SelectionBrush" Value="LightGray"></Setter>
+            <Setter Property="SelectionOpacity" Value="0.3"></Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RichTextBox}">
+                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="DimGray" BorderThickness="1">
+                            <Grid>
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Name="TypicalTextBox" TargetType="TextBox" x:Key="TypicalTextBox">
+            <Setter Property="Margin" Value="1.6,3" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="FontWeight" Value="Normal"  />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Background" Value="#1c1c1c" />
+            <Setter Property="SelectionBrush" Value="LightGray"></Setter>
+            <Setter Property="SelectionOpacity" Value="0.3"></Setter>
+            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="DimGray" BorderThickness="1">
+                            <Grid>
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button">
             <Setter Property="Margin" Value="1.6" />
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontSize" Value="30" />
             <Setter Property="FontFamily" Value=".Segoe UI" />
-            <Setter Property="FontWeight" Value="DemiBold"  />
+            <Setter Property="FontWeight" Value="Normal"  />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="Background">
                 <Setter.Value>
@@ -94,7 +86,7 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="DimGray" BorderThickness="1">
                             <Grid>
-                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Grid>
                         </Border>
 
@@ -115,5 +107,207 @@
                 </Setter.Value>
             </Setter>
         </Style>
-       </Window.Resources>
+
+        <Style TargetType="Button" x:Key="Special">
+            <Setter Property="Margin" Value="1.6" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="FontWeight" Value="Normal"  />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Foreground" Value="#f50029" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush SpreadMethod="Pad" StartPoint="0,0" EndPoint="0,0.5">
+                        <GradientStop Offset="-4" Color="DarkGray"/>
+                        <GradientStop Offset="1" Color="#0c0c0c"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="DimGray" BorderThickness="1">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#3c3c3c"/>
+                                <Setter Property="Margin" Value="2.5"/>
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#3c3c3c"/>
+                                <Setter Property="Margin" Value="4"/>
+                                <Setter Property="Opacity" Value="1.0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="Operations">
+            <Setter Property="Margin" Value="1.6" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="FontWeight" Value="Normal"  />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Foreground" Value="CadetBlue" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush SpreadMethod="Pad" StartPoint="0,0" EndPoint="0,0.5">
+                        <GradientStop Offset="-4" Color="DarkGray"/>
+                        <GradientStop Offset="1" Color="#0c0c0c"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="DimGray" BorderThickness="1">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#3c3c3c"/>
+                                <Setter Property="Margin" Value="2.5"/>
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#3c3c3c"/>
+                                <Setter Property="Margin" Value="4"/>
+                                <Setter Property="Opacity" Value="1.0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="Braces">
+            <Setter Property="Margin" Value="1.6" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="FontWeight" Value="Light"  />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Foreground" Value="PaleVioletRed" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush SpreadMethod="Pad" StartPoint="0,0" EndPoint="0,0.5">
+                        <GradientStop Offset="-4" Color="DarkGray"/>
+                        <GradientStop Offset="1" Color="#0c0c0c"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="DimGray" BorderThickness="1">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#3c3c3c"/>
+                                <Setter Property="Margin" Value="2.5"/>
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#3c3c3c"/>
+                                <Setter Property="Margin" Value="4"/>
+                                <Setter Property="Opacity" Value="1.0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+
+
+    <Grid Name = "LayoutRoot" Background="#443f3b">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <!--Text-->
+        <RichTextBox
+            Style="{StaticResource TypicalRichTextBox}"
+            Name = "ExpressionBlock" 
+            Grid.Row = "0" 
+            Grid.Column = "0" 
+            Grid.RowSpan="2" 
+            Grid.ColumnSpan="5" 
+            />
+        <TextBox 
+                Text="1234567890"
+                IsReadOnly="True" 
+                IsReadOnlyCaretVisible="True" 
+                Style="{StaticResource TypicalTextBox}" 
+                FontSize="30" 
+                FlowDirection="RightToLeft"
+                Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5"/>
+        <!--Numbers-->
+        <Button  Grid.Row = "4" Grid.Column = "0" Content="7"/>
+        <Button  Grid.Row = "4" Grid.Column = "1" Content="8"/>
+        <Button  Grid.Row = "4" Grid.Column = "2" Content="9"/>
+        <Button  Grid.Row = "5" Grid.Column = "0">4</Button>
+        <Button  Grid.Row = "5" Grid.Column = "1">5</Button>
+        <Button  Grid.Row = "5" Grid.Column = "2">6</Button>
+        <Button  Grid.Row = "6" Grid.Column = "0" Content="1"/>
+        <Button  Grid.Row = "6" Grid.Column = "1" Content="2"/>
+        <Button  Grid.Row = "6" Grid.Column = "2" Content="3"/>
+        <Button  Grid.Row = "7" Grid.Column = "0">0</Button>
+
+        <!--Operations-->
+        <Button Style="{StaticResource Operations}" Grid.Row = "5" Grid.Column = "3" Content="×"/>
+        <Button Style="{StaticResource Operations}" Grid.Row = "6" Grid.Column = "3">-</Button>
+        <Button Style="{StaticResource Operations}" Grid.Row = "7" Grid.Column = "3">+</Button>
+        <Button Style="{StaticResource Operations}" Grid.Row = "7" Grid.Column = "2">%</Button>
+        <Button Style="{StaticResource Operations}" Grid.Row = "4" Grid.Column = "4">√</Button>
+        <Button Style="{StaticResource Operations}" Grid.Row = "5" Grid.Column = "4">^</Button>
+        <Button Style="{StaticResource Operations}" Grid.Row = "7" Grid.Column = "4">=</Button>
+        <Button Style="{StaticResource Operations}" Grid.Row = "4" Grid.Column = "3" Content="÷"/>
+
+        <!--Other actions-->
+
+        <Button Style="{StaticResource Special}" Grid.Row = "3" Grid.Column = "3">C</Button>
+        <Button Style="{StaticResource Special}" Grid.Row = "3" Grid.Column = "4" Content="←"/>
+        <Button  Grid.Row = "7" Grid.Column = "1">.</Button>
+        <Button Style="{StaticResource Braces}" VerticalContentAlignment="Top" Grid.Row = "3" Grid.Column = "1">(</Button>
+        <Button Style="{StaticResource Braces}" Grid.Row = "3" Grid.Column = "2">)</Button>
+        <Button  Grid.Row = "7" Grid.Column = "1">.</Button>
+        <Button FontFamily="Verdana" FontWeight="Light" Grid.Row = "3" Grid.Column = "0" FontSize="25" >HIST</Button>
+        <Button  Grid.Row = "6" Grid.Column = "5" ToolTip="Coming soon... Maybe">...</Button>
+    </Grid>
+
 </Window>
