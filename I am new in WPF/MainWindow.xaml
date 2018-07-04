@@ -80,6 +80,11 @@
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Direction="270" BlurRadius="0" Opacity="0.2" />
+                </Setter.Value>
+            </Setter>
 
             <Setter Property="Template">
                 <Setter.Value>
@@ -93,7 +98,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#3c3c3c"/>
-                                <Setter Property="Margin" Value="2.5"/>
+
                                 <Setter Property="Opacity" Value="0.8" />
                             </Trigger>
 
@@ -107,6 +112,61 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style TargetType="Button" x:Key="Numbers">
+            <Setter Property="Margin" Value="1.6" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontFamily" Value=".Segoe UI" />
+            <Setter Property="FontWeight" Value="Normal"  />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush SpreadMethod="Pad" StartPoint="0,0" EndPoint="0,0.5">
+                        <GradientStop Offset="-4" Color="DarkGray"/>
+                        <GradientStop Offset="1" Color="#0c0c0c"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Direction="270" BlurRadius="0" Opacity="0.2" />
+                </Setter.Value>
+            </Setter>
+            
+            <EventSetter Event="PreviewMouseDown" Handler="NumberButton_PreviewMouseDown"></EventSetter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="DimGray" BorderThickness="1">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                
+
+                            </Grid>
+                        </Border>
+                        
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#3c3c3c"/>
+
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#3c3c3c"/>
+                                <Setter Property="Margin" Value="4"/>
+                                <Setter Property="Opacity" Value="1.0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                        
+                        
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
 
         <Style TargetType="Button" x:Key="Special">
             <Setter Property="Margin" Value="1.6" />
@@ -123,6 +183,11 @@
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Direction="270" BlurRadius="0" Opacity="0.2" />
+                </Setter.Value>
+            </Setter>
 
             <Setter Property="Template">
                 <Setter.Value>
@@ -136,7 +201,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#3c3c3c"/>
-                                <Setter Property="Margin" Value="2.5"/>
+
                                 <Setter Property="Opacity" Value="0.8" />
                             </Trigger>
 
@@ -166,6 +231,12 @@
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
+           <Setter Property="Effect"> <!--Думал убрать для операций, но с тенью они как-то даже заметнее. Но при этом не сильно.-->
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Direction="270" BlurRadius="0" Opacity="0.2" />
+                </Setter.Value>
+            </Setter>
+            <EventSetter Event="PreviewMouseDown" Handler="OperationButton_PreviewMouseDown"></EventSetter>
 
             <Setter Property="Template">
                 <Setter.Value>
@@ -179,7 +250,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#3c3c3c"/>
-                                <Setter Property="Margin" Value="2.5"/>
+
                                 <Setter Property="Opacity" Value="0.8" />
                             </Trigger>
 
@@ -209,6 +280,12 @@
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Direction="270" BlurRadius="0" Opacity="0.2" />
+                </Setter.Value>
+            </Setter>
+            <EventSetter Event="PreviewMouseDown" Handler="BraceButton_PreviewMouseDown"></EventSetter>
 
             <Setter Property="Template">
                 <Setter.Value>
@@ -222,7 +299,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#3c3c3c"/>
-                                <Setter Property="Margin" Value="2.5"/>
+
                                 <Setter Property="Opacity" Value="0.8" />
                             </Trigger>
 
@@ -277,16 +354,16 @@
                 FlowDirection="RightToLeft"
                 Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5"/>
         <!--Numbers-->
-        <Button  Grid.Row = "4" Grid.Column = "0" Content="7"/>
-        <Button  Grid.Row = "4" Grid.Column = "1" Content="8"/>
-        <Button  Grid.Row = "4" Grid.Column = "2" Content="9"/>
-        <Button  Grid.Row = "5" Grid.Column = "0">4</Button>
-        <Button  Grid.Row = "5" Grid.Column = "1">5</Button>
-        <Button  Grid.Row = "5" Grid.Column = "2">6</Button>
-        <Button  Grid.Row = "6" Grid.Column = "0" Content="1"/>
-        <Button  Grid.Row = "6" Grid.Column = "1" Content="2"/>
-        <Button  Grid.Row = "6" Grid.Column = "2" Content="3"/>
-        <Button  Grid.Row = "7" Grid.Column = "0">0</Button>
+        <Button Style="{StaticResource Numbers}" Grid.Row = "4" Grid.Column = "0" Content="7"/>
+        <Button Style="{StaticResource Numbers}" Grid.Row = "4" Grid.Column = "1" Content="8"/>
+        <Button Style="{StaticResource Numbers}" Grid.Row = "4" Grid.Column = "2" Content="9"/>
+        <Button Style="{StaticResource Numbers}" Grid.Row = "5" Grid.Column = "0">4</Button>
+        <Button Style="{StaticResource Numbers}" Grid.Row = "5" Grid.Column = "1">5</Button>
+        <Button Style="{StaticResource Numbers}" Grid.Row = "5" Grid.Column = "2">6</Button>
+        <Button Style="{StaticResource Numbers}" Grid.Row = "6" Grid.Column = "0" Content="1"/>
+        <Button Style="{StaticResource Numbers}" Grid.Row = "6" Grid.Column = "1" Content="2"/>
+        <Button Style="{StaticResource Numbers}" Grid.Row = "6" Grid.Column = "2" Content="3"/>
+        <Button Style="{StaticResource Numbers}" Grid.Row = "7" Grid.Column = "0">0</Button>
 
         <!--Operations-->
         <Button Style="{StaticResource Operations}" Grid.Row = "5" Grid.Column = "3" Content="×"/>
@@ -300,12 +377,12 @@
 
         <!--Other actions-->
 
-        <Button Style="{StaticResource Special}" Grid.Row = "3" Grid.Column = "3">C</Button>
-        <Button Style="{StaticResource Special}" Grid.Row = "3" Grid.Column = "4" Content="←"/>
+        <Button PreviewMouseDown="ClearButton_PreviewMouseDown" Style="{StaticResource Special}" Grid.Row = "3" Grid.Column = "3">C</Button>
+        <Button PreviewMouseDown="BackspaceButton_PreviewMouseDown" Style="{StaticResource Special}" Grid.Row = "3" Grid.Column = "4" Content="←"/>
         <Button  Grid.Row = "7" Grid.Column = "1">.</Button>
         <Button Style="{StaticResource Braces}" VerticalContentAlignment="Top" Grid.Row = "3" Grid.Column = "1">(</Button>
         <Button Style="{StaticResource Braces}" Grid.Row = "3" Grid.Column = "2">)</Button>
-        <Button  Grid.Row = "7" Grid.Column = "1">.</Button>
+        <Button Grid.Row = "7" Grid.Column = "1">.</Button>
         <Button FontFamily="Verdana" FontWeight="Light" Grid.Row = "3" Grid.Column = "0" FontSize="25" >HIST</Button>
         <Button  Grid.Row = "6" Grid.Column = "5" ToolTip="Coming soon... Maybe">...</Button>
     </Grid>
