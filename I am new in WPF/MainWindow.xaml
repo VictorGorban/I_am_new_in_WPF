@@ -13,6 +13,8 @@
             <Setter Property="BorderBrush" Value="DimGray"></Setter>
             <Setter Property="Background" Value="#1c1c1c"></Setter>
             <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
         </Style>
 
 
@@ -23,6 +25,8 @@
             <Setter Property="FontFamily" Value="Verdana" />
             <Setter Property="FontWeight" Value="Normal"  />
             <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
             <Setter Property="Background" Value="#1c1c1c" />
             <Setter Property="SelectionBrush" Value="LightGray"></Setter>
             <Setter Property="SelectionOpacity" Value="0.3"></Setter>
@@ -47,6 +51,8 @@
             <Setter Property="FontFamily" Value="Verdana" />
             <Setter Property="FontWeight" Value="Normal"  />
             <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
             <Setter Property="Background" Value="#1c1c1c" />
             <Setter Property="SelectionBrush" Value="LightGray"></Setter>
             <Setter Property="SelectionOpacity" Value="0.3"></Setter>
@@ -72,6 +78,8 @@
             <Setter Property="FontFamily" Value=".Segoe UI" />
             <Setter Property="FontWeight" Value="Normal"  />
             <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush SpreadMethod="Pad" StartPoint="0,0" EndPoint="0,0.5">
@@ -117,9 +125,11 @@
             <Setter Property="Margin" Value="1.6" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="30" />
-            <Setter Property="FontFamily" Value=".Segoe UI" />
-            <Setter Property="FontWeight" Value="Normal"  />
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="FontWeight" Value="Thin"  />
             <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush SpreadMethod="Pad" StartPoint="0,0" EndPoint="0,0.5">
@@ -175,6 +185,8 @@
             <Setter Property="FontWeight" Value="Normal"  />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="Foreground" Value="#f50029" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush SpreadMethod="Pad" StartPoint="0,0" EndPoint="0,0.5">
@@ -222,7 +234,9 @@
             <Setter Property="FontFamily" Value="Verdana" />
             <Setter Property="FontWeight" Value="Normal"  />
             <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="Foreground" Value="CadetBlue" />
+            <Setter Property="Foreground" Value="CornflowerBlue" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush SpreadMethod="Pad" StartPoint="0,0" EndPoint="0,0.5">
@@ -271,6 +285,8 @@
             <Setter Property="FontFamily" Value="Verdana" />
             <Setter Property="FontWeight" Value="Light"  />
             <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
             <Setter Property="Foreground" Value="PaleVioletRed" />
             <Setter Property="Background">
                 <Setter.Value>
@@ -346,6 +362,7 @@
             Grid.ColumnSpan="5" 
             />
         <TextBox 
+                Name="ResultBlock"
                 Text="1234567890"
                 IsReadOnly="True" 
                 IsReadOnlyCaretVisible="True" 
@@ -383,7 +400,7 @@
         <Button Style="{StaticResource Braces}" VerticalContentAlignment="Top" Grid.Row = "3" Grid.Column = "1">(</Button>
         <Button Style="{StaticResource Braces}" Grid.Row = "3" Grid.Column = "2">)</Button>
         <Button Grid.Row = "7" Grid.Column = "1">.</Button>
-        <Button FontFamily="Verdana" FontWeight="Light" Grid.Row = "3" Grid.Column = "0" FontSize="25" >HIST</Button>
+        <Button RenderOptions.BitmapScalingMode="NearestNeighbor" FontFamily="Verdana" FontWeight="Light" Grid.Row = "3" Grid.Column = "0" FontSize="25" >HIST</Button>
         <Button  Grid.Row = "6" Grid.Column = "5" ToolTip="Coming soon... Maybe">...</Button>
     </Grid>
 
