@@ -1,28 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-namespace I_am_new_in_WPF
+class MainViewModel : INotifyPropertyChanged
 {
-	public class MainViewModel : INotifyPropertyChanged
+	private string _model;
+	private string _maxSpeed;
+	private string _price;
+
+	public MainViewModel()
 	{
-		#region fields
-		private string _buttonHistoryLabel;
-		#endregion
-		#region events
-		public event PropertyChangedEventHandler PropertyChanged;
-		#endregion
+		_maxSpeed = "23442";
+		_model = "ferrari";
+		_price = 234234.234234.ToString();
+	}
 
-		#region props
-		public string ButtonHistoryLabel { get => _buttonHistoryLabel; set => _buttonHistoryLabel = value; }
-		#endregion
-
-		public MainViewModel()
+	public string Model
+	{
+		get { return _model; }
+		set
 		{
-			_buttonHistoryLabel = "HIST";
+			_model = value;
+			OnPropertyChanged();
 		}
+	}
+	public string MaxSpeed
+	{
+		get
+		{
+			return _maxSpeed;
+		}
+		set
+		{
+			_maxSpeed = value;
+			OnPropertyChanged(nameof(MaxSpeed));
+		}
+	}
+	public string Price
+	{
+		get { return _price; }
+		set
+		{
+			_price = value;
+			OnPropertyChanged(Price); 
+			//OnPropertyChanged(Price); // Не получится, потому что вызовется Price.ToString() => value of price, not name of property.
+		}
+	}
+	public event PropertyChangedEventHandler PropertyChanged;
+	public void OnPropertyChanged([CallerMemberName]string prop = "")
+	{
+		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 	}
 }

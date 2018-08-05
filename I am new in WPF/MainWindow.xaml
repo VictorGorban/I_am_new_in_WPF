@@ -231,10 +231,10 @@
 
         <Button PreviewMouseDown="ClearButton_PreviewMouseDown" Style="{StaticResource Special}" Grid.Row = "3" Grid.Column = "3">C</Button>
         <Button PreviewMouseDown="BackspaceButton_PreviewMouseDown" Style="{StaticResource Special}" Grid.Row = "3" Grid.Column = "4" Content="←"/>
-        <Button Style="{StaticResource Special}"  Grid.Row = "7" Grid.Column = "1">.</Button>
+        <Button Style="{StaticResource Special}"  Grid.Row = "7" Grid.Column = "1" Content="{Binding Model}"></Button>
         <Button Style="{StaticResource Braces}" VerticalContentAlignment="Top" Grid.Row = "3" Grid.Column = "1">(</Button>
         <Button Style="{StaticResource Braces}" Grid.Row = "3" Grid.Column = "2">)</Button>
-        <Button Style="{StaticResource BaseForButtons}" FontFamily="Verdana" FontSize="20" Grid.Row="3" Grid.Column="0">HIST</Button>
+		<Button Style="{StaticResource BaseForButtons}" FontFamily="Verdana" FontSize="20" Grid.Row="3" Grid.Column="0" Content="{Binding MaxSpeed}" Click="Button_Click"></Button>
         <Button Style="{StaticResource BaseForButtons}" Grid.Row = "6" Grid.Column = "5" ToolTip="Coming soon... Maybe">...</Button>
     </Grid>
 
